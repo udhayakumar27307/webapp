@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #ff6f61, #ffb7b7, #a0c4ff, #ffdfba);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #6c5ce7;
+    }
+
+    .btn-login {
+      background-color: #6c5ce7;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-login:hover {
+      background-color: #5a4cd1;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -10px;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #6c5ce7;
+      text-decoration: none;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .signup {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .signup a {
+      color: #6c5ce7;
+      text-decoration: none;
+    }
+
+    .signup a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Welcome Back!</h2>
+    <form id="loginForm" action="" method="post" onsubmit="return validateForm()">
+      <div>
+        <input type="text" id="username" class="input-field" placeholder="Username" name="username" required>
+        <div id="usernameError" class="error"></div>
+      </div>
+      <div>
+        <input type="password" id="password" class="input-field" placeholder="Password" name="password" required>
+        <div id="passwordError" class="error"></div>
+      </div>
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+    <a href="#" class="forgot-password">Forgot Password?</a>
+    <div class="signup">
+      Don't have an account? <a href="#">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+      let usernameError = document.getElementById("usernameError");
+      let passwordError = document.getElementById("passwordError");
+      let isValid = true;
+
+      // Reset error messages
+      usernameError.textContent = '';
+      passwordError.textContent = '';
+
+      // Username validation
+      if (username.trim() === '') {
+        usernameError.textContent = 'Username cannot be empty';
+        isValid = false;
+      }
+
+      // Password validation
+      if (password.trim() === '') {
+        passwordError.textContent = 'Password cannot be empty';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+
+</body>
+</html>
